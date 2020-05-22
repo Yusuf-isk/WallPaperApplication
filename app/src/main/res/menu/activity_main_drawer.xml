@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_photos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/Fotoğraflar" />
+        <item
+            android:id="@+id/nav_collections"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/Kategoriler" />
+        <item
+            android:id="@+id/nav_favoriler"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/favoriler" />
+    </group>
+</menu>
