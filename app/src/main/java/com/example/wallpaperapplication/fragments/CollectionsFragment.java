@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import com.example.wallpaperapplication.R;
 import com.example.wallpaperapplication.adapters.CollectionsAdapter;
 import com.example.wallpaperapplication.models.Collection;
@@ -54,7 +55,7 @@ public class CollectionsFragment extends Fragment {
         bundle.putInt("collectionId",collection.getId());
         CollectionFragment collectionFragment = new CollectionFragment();
         collectionFragment.setArguments(bundle);
-        Functions.chanceMainFragmentWithBack(getActivity(),collectionFragment);
+        Functions.changeMainFragmentWithBack(getActivity(),collectionFragment);
     }
     private void getCollections() {
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
@@ -68,6 +69,7 @@ public class CollectionsFragment extends Fragment {
                 } else {
                     Log.e(TAG,"Fail"+response.message());
                 }
+                showProgressBar(false);
             }
 
             @Override

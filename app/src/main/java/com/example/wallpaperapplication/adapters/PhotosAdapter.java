@@ -67,12 +67,12 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
         SquareImage photo;
         @BindView(R.id.item_photo_layout)
         FrameLayout frameLayout;
-
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
+
         @OnClick(R.id.item_photo_layout)
         public void setFrameLayout() {
             int position = getAdapterPosition();
@@ -81,5 +81,6 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
             intent.putExtra("photoId",photoId);
             context.startActivity(intent);
         }
+
     }
 }

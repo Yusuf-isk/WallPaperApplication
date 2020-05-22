@@ -16,4 +16,5 @@
     <string name="wallpaper">Wallpaper</string>
     <string name="Kategoriler">Kategoriler</string>
     <string name="Fotoğraflar">Fotoğraflar </string>
+    <string name="favoriTxt">Favoriniz Bulunmamaktadır</string>
 </resources>

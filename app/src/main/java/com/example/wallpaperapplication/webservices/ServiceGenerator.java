@@ -23,7 +23,7 @@ public class ServiceGenerator {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
                     Request request = chain.request().newBuilder()
-                            .addHeader("Authorization","Client-ID"+Constants.APPLICATION_ID)
+                            .addHeader("Authorization","Client-ID " + Constants.APPLICATION_ID)
                             .build();
                     return chain.proceed(request);
                 }

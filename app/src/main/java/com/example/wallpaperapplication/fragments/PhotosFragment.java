@@ -63,7 +63,7 @@ public class PhotosFragment extends Fragment {
                 if (response.isSuccessful()) {
                     photos.addAll(response.body());
                     photosAdapter.notifyDataSetChanged();
-                    Log.e(TAG,"************************************");
+
                 } else {
                     Log.e(TAG,response.message());
                 }
@@ -80,16 +80,14 @@ public class PhotosFragment extends Fragment {
     private void showProgressBar(boolean isShow) {
         if (isShow) {
             progressBar.setVisibility(View.VISIBLE);
-            recyclerView.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.INVISIBLE);
         } else {
-            progressBar.setVisibility(View.GONE);
+            progressBar.setVisibility(View.INVISIBLE);
             recyclerView.setVisibility(View.VISIBLE);
         }
 
 
     }
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

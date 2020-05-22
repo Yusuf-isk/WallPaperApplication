@@ -58,9 +58,9 @@ public class CollectionFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         photosAdapter = new PhotosAdapter(getActivity(),photos);
         recyclerView.setAdapter(photosAdapter);
-
         Bundle bundle = getArguments();
         int collectionId = bundle.getInt("collectionId");
+        String a = ((String.valueOf(collectionId)));
         showProgressBar(true);
         getInformationOfCollection(collectionId);
         getPhotosOfCollection(collectionId);
@@ -85,37 +85,40 @@ public class CollectionFragment extends Fragment {
                 } else {
                     Log.e(TAG,"Fail"+response.message());
                 }
+                showProgressBar(false);
             }
 
             @Override
             public void onFailure(Call<Collection> call, Throwable t) {
-
+                showProgressBar(false);
             }
         });
     }
-    private void getPhotosOfCollection(int collectionId) {
+    private void getPhotosOfCollection(int collectionId){
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
         Call<List<Photo>> call = apiInterface.getPhotosOfCollection(collectionId);
         call.enqueue(new Callback<List<Photo>>() {
             @Override
             public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
-                if (response.isSuccessful()) {
-                    photos.addAll(response.body());
+                if(response.isSuccessful()){
+                    Log.d(TAG, "Loading successfully, size: " + response.body().size());
+                    for(Photo photo: response.body()){
+                        photos.add(photo);
+                    }
                     photosAdapter.notifyDataSetChanged();
-                } else {
-                    Log.e(TAG, "Fail" + response.message());
+
+                }else{
+                    Log.d(TAG, "Fail" + response.message());
                 }
+                showProgressBar(false);
             }
 
             @Override
             public void onFailure(Call<List<Photo>> call, Throwable t) {
-
+                Log.d(TAG, "Fail: " + t.getMessage());
+                showProgressBar(false);
             }
-
         });
-
-
-
     }
     private void showProgressBar(boolean isShow) {
         if (isShow) {

@@ -1,6 +1,7 @@
 package com.example.wallpaperapplication.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +23,11 @@ import butterknife.ButterKnife;
 public class CollectionsAdapter extends BaseAdapter {
     private Context context;
     private List<Collection> collections;
+
     public CollectionsAdapter(Context context, List<Collection> collections) {
         this.context = context;
         this.collections = collections;
     }
-
 
     @Override
     public int getCount() {
@@ -58,7 +59,7 @@ public class CollectionsAdapter extends BaseAdapter {
         if (collection.getTitle() != null) {
             holder.title.setText(collection.getTitle());
         }
-        holder.totalPhotos.setText(String.valueOf(collection.getTotalPhotos())+"photos");
+        holder.totalPhotos.setText(collection.getTotalPhotos() +"photos");
         GlideApp
                 .with(context)
                 .load(collection.getCoverPhoto().getUrl().getRegular())
@@ -76,7 +77,6 @@ public class CollectionsAdapter extends BaseAdapter {
 
         public ViewHolder(View view) {
             ButterKnife.bind(this,view);
-
         }
     }
 }
